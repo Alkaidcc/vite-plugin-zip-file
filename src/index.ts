@@ -6,9 +6,9 @@ const pathSep = path.sep
 const { cwd } = process
 interface PluginConfig {
   enabled?: boolean
-  folderPath: string
-  outPath: string
-  zipName: string
+  folderPath?: string
+  outPath?: string
+  zipName?: string
   deleteFolder?: boolean
 }
 
