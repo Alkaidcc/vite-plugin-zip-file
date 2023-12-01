@@ -1,15 +1,16 @@
 import path from 'node:path'
 import fs from 'node:fs'
 import JSZip from 'jszip'
+import { defu } from 'defu'
 
 const pathSep = path.sep
 const { cwd } = process
 interface PluginConfig {
-  enabled?: boolean
-  folderPath?: string
-  outPath?: string
-  zipName?: string
-  deleteFolder?: boolean
+  enabled: boolean
+  folderPath: string
+  outPath: string
+  zipName: string
+  deleteFolder: boolean
 }
 
 const defaultConfig: PluginConfig = {
@@ -20,13 +21,10 @@ const defaultConfig: PluginConfig = {
   deleteFolder: false,
 }
 
-export const viteZip = (customConfig: PluginConfig) => {
-  const config: PluginConfig = {
-    ...defaultConfig,
-    ...customConfig,
-  }
+export const viteZip = (customConfig: Partial<PluginConfig>) => {
+  const mergedConfig = defu(customConfig, defaultConfig)
   let { enabled, folderPath, outPath, zipName, deleteFolder }: PluginConfig =
-    config
+    mergedConfig
   enabled = Boolean(enabled)
   if (!folderPath || !outPath) {
     throw new Error('config.folderPath and config.outPath is required.')
