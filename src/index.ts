@@ -21,7 +21,7 @@ const defaultConfig: PluginConfig = {
   deleteFolder: false,
 }
 
-export const viteZip = (customConfig: Partial<PluginConfig>) => {
+export const viteZip = (customConfig?: Partial<PluginConfig>) => {
   const mergedConfig = defu(customConfig, defaultConfig)
   let { enabled, folderPath, outPath, zipName, deleteFolder }: PluginConfig =
     mergedConfig
