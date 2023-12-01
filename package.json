@@ -1,42 +1,64 @@
 {
-  "name": "vite-plugin-zip-file",
-  "version": "2.2.0",
-  "description": "zip files at build time.",
+  "name": "@alkaidcc/vite-plugin-zip",
+  "version": "0.0.1",
+  "packageManager": "pnpm@8.8.0",
+  "description": "generate .zip file for dist",
   "type": "module",
-  "main": "lib/index.cjs",
-  "files": [
-    "lib/*",
-    "LICENSE",
-    "package.json",
-    "README.md"
-  ],
-  "module": "lib/index.mjs",
-  "scripts": {
-    "dev": "vite",
-    "build": "vite build",
-    "build-d": "node --inspect-brk=9229 ./node_modules/vite/dist/node/cli.js build",
-    "build-plugin": "vite --config plugin.config.js build"
+  "license": "MIT",
+  "homepage": "https://github.com/alkaidcc/vite-plugin-zip#readme",
+  "bugs": {
+    "url": "https://github.com/alkaidcc/vite-plugin-zip/issues"
   },
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com/Ssis53/vite-plugin-zip.git"
+    "url": "git+https://github.com/alkaidcc/vite-plugin-zip.git"
   },
-  "keywords": [
-    "vite",
-    "zip",
-    "compress"
+  "files": [
+    "dist"
   ],
-  "author": "Shawn Wu",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/Ssis53/vite-plugin-zip/issues"
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "require": "./dist/index.cjs",
+      "import": "./dist/index.js"
+    },
+    "./package.json": "./package.json"
   },
-  "homepage": "https://github.com/Ssis53/vite-plugin-zip#readme",
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "lint": "eslint --cache .",
+    "lint:fix": "pnpm run lint --fix",
+    "build": "tsup",
+    "dev": "tsup --watch",
+    "test": "vitest",
+    "typecheck": "tsc --noEmit",
+    "release": "bumpp && pnpm publish",
+    "prepublishOnly": "pnpm run build"
+  },
   "dependencies": {
+    "consola": "^3.2.3",
     "jszip": "^3.10.1"
   },
   "devDependencies": {
-    "vite": "^4.0.4",
-    "@rollup/plugin-node-resolve": "^13.3.0"
-  }
+    "@sxzz/eslint-config": "^3.6.1",
+    "@sxzz/prettier-config": "^1.0.4",
+    "@types/node": "^20.8.0",
+    "bumpp": "^9.2.0",
+    "eslint": "^8.50.0",
+    "fast-glob": "^3.3.1",
+    "prettier": "^3.0.3",
+    "tsup": "^7.2.0",
+    "tsx": "^3.13.0",
+    "typescript": "^5.2.2",
+    "vite": "^4.4.10",
+    "vitest": "^0.34.6"
+  },
+  "engines": {
+    "node": ">=16.14.0"
+  },
+  "prettier": "@sxzz/prettier-config"
 }
