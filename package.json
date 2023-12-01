@@ -5,13 +5,13 @@
   "description": "generate .zip file for dist",
   "type": "module",
   "license": "MIT",
-  "homepage": "https://github.com/alkaidcc/vite-plugin-zip#readme",
+  "homepage": "https://github.com/Alkaidcc/vite-plugin-zip-file#readme",
   "bugs": {
-    "url": "https://github.com/alkaidcc/vite-plugin-zip/issues"
+    "url": "https://github.com/Alkaidcc/vite-plugin-zip-file/issues"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/alkaidcc/vite-plugin-zip.git"
+    "url": "git+https://github.com/Alkaidcc/vite-plugin-zip-file.git"
   },
   "files": [
     "dist"
