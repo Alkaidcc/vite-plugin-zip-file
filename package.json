@@ -1,6 +1,6 @@
 {
   "name": "@alkaidcc/vite-plugin-zip",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "packageManager": "pnpm@8.8.0",
   "description": "generate .zip file for dist",
   "type": "module",
